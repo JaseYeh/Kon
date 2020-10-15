@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9d96d988db.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="css/kon.css">
+    <link rel="stylesheet" href="dist/css/simpleaudioplayer.min.css">
+    <style>
+        main {
+            padding-top: 50px;
+        }
+
+        main h2 {
+            padding-top: 50px;
+        }
+
+        main .title-name {
+            font-size: 20px;
+            letter-spacing: 5px;
+            margin-left: 3px;
+            margin-top: 5px;
+            margin-bottom: 80px;
+        }
+
+        /* 側欄 */
+
+        aside {
+            width: 30%;
+            max-width: 350px;
+        }
+
+        .social .fas {
+            border: 2px solid #999;
+            font-size: 1em;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            color: #999;
+            cursor: pointer;
+        }
+
+
+        .now-playing .music-cover {
+            width: 25vw;
+            max-width: 350px;
+            height: 25vw;
+            max-height: 350px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #aaa;
+            margin-right: 50px;
+        }
+
+        .now-playing figure img {
+            width: 100%;
+        }
+
+
+        .social .fas:hover {
+            color: #0063AD;
+            border: 2px solid #0063AD;
+        }
+
+        .social .fas.active {
+            color: #0063AD;
+            border: 2px solid #0063AD;
+        }
+
+        aside section {
+            margin: 30px 0;
+        }
+
+        .musician {
+            width: 25vw;
+            max-width: 350px;
+
+        }
+
+
+        .musician figure {
+            border-radius: 50%;
+            height: 15vw;
+            width: 15vw;
+            max-width: 150px;
+            max-height: 150px;
+            overflow: hidden;
+            margin: 30px auto;
+        }
+
+        .musician figure img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .musician div {
+            position: relative;
+            overflow: hidden;
+            max-height: 150px;
+            transition: .5s;
+            padding-bottom: 90px;
+
+
+        }
+
+        .musician .more {
+            position: absolute;
+            bottom: 0;
+            margin-top: -50px;
+            width: 25vw;
+            max-width: 350px;
+            line-height: 100px;
+            font-weight: 500;
+            text-align: center;
+            background: linear-gradient(to top, #D7DCE0 70%, #d7dce000);
+            margin-bottom: 0;
+            cursor: pointer;
+            color: #0063AD;
+
+
+        }
+
+        .musician div.active {
+            max-height: 350px
+        }
+
+
+
+        /* 主欄 */
+        .now-playing h3 {
+            font-size: 2em;
+            margin-bottom: 30px;
+
+        }
+
+        .now-playing h3 .fa-play-circle {
+            font-size: 1.5em;
+            vertical-align: middle;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .now-playing h5 {
+            line-height: 1.5;
+            color: #777;
+        }
+
+        .now-playing-content {
+                width: 65%;
+            }
+
+
+
+        .now-playing-content p {
+            margin: 40px 0;
+
+        }
+
+        .song-list {
+            list-style: none;
+            list-style-position: inside;
+            padding: 0;
+            margin-bottom: 100px;
+        }
+
+        .song-list li {
+            border-bottom: 1px solid #ccc;
+            line-height: 60px;
+            cursor: pointer;
+            color: #333;
+
+        }
+
+        .song-list li .fa-play-circle {
+            margin-right: 10px;
+            font-size: 1.5em;
+            vertical-align: middle;
+        }
+
+        .song-list li:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .song-list li.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .player {
+            width: 320px;
+            height: 70px;
+            position: fixed;
+            bottom: 0;
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px 5px 0 0;
+            
+
+        }
+
+        .player i {
+            font-size: 2.5em;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .player h4 {
+            width: 240px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 21px;
+            margin: 0;
+        }
+
+        .fa-pause-circle {
+            display: none;
+            z-index: 70;
+        }
+
+        .player:hover .fa-play-circle {
+            display: none;
+        }
+
+        .player:hover .fa-pause-circle {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+
+            main h2,
+            .title-name {
+                text-align: center;
+            }
+
+            .now-playing {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            aside {
+                width: 100%;
+            }
+
+            .now-playing .music-cover {
+                width: 90vw;
+                height: 90vw;
+            }
+
+            .now-playing figure img {
+                width: 100%;
+            }
+
+            .now-playing-content {
+                width: 100%;
+            }
+
+            .btplayer{
+                padding: 0;
+            }
+
+            .player{
+                width: 100%;
+            }
+
+            .player h4{
+                width: 100%;   
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="wrapper">
+            <a href="index.html"><img src="img/logo.png" alt=""></a>
+            <ul class="main-nav hide-m">
+
+                <li><a href="intro.html">About</a></li>
+                <li><a href="artworks.html">Artworks</a></li>
+                <li><a href="soundtrack.html" class="active">Soundtrack</a></li>
+            </ul>
+            <div class="language hide-m">
+                <i class="fas fa-globe-americas"></i>
+                <ul>
+                    <li>中文</li>
+                    <li>English</li>
+                </ul>
+            </div>
+            <div class="hide-w nav-bar"><i class="fas fa-bars"></i>
+                <ul>
+                    <li><a href="intro.html">About</a></li>
+                    <li><a href="artworks.html">Artworks</a></li>
+                    <li><a href="soundtrack.html">Soundtrack</a></li>
+                </ul>
+            </div>
+    </header>
+
+
+    <main class="wrapper">
+        <h2>Soundtrack</h2>
+        <p class="title-name">配樂</p>
+
+        <article class="now-playing d-flex justify-content-between">
+            <aside>
+                <figure class="music-cover"><img src="img/paprika-ost.jpeg" alt=""></figure>
+                <section class="social"><i class="fas fa-share"></i><i class="fas fa-heart"></i> 共有 <span
+                        id="people">152</span> 人喜歡</section>
+                <section class="musician hide-m">
+                    <h4 class="mt-5">Musician</h4>
+                    <figure>
+                        <img src="img/musician.jpg" alt="">
+                    </figure>
+                    <div>平澤進（日語：平沢
+                        進，1954年4月1日－），日本音樂家、音樂製作人。在1979年以電子樂樂團「P-MODEL」成員身分正式出道，之後與HIKASHU和Plastics一同被稱為「Techno御三家」（日語：テクノ御三家）樂團之一。樂團本身經過多次曲折，目前處於稱為「培養」的休止狀態，現在則是以個人為主，進行各式各樣的活動。愛稱為「師父」（日語：師匠）、「Hirasawa」（日語：ヒラサワ）。
+                        <p class="more">See More <i class="fas fa-arrow-down"></i></p>
+                    </div>
+
+                </section>
+            </aside>
+
+            <div class="now-playing-content">
+                <h3><i class="far fa-play-circle main-color"></i> <span class="song-title">Parade</span></h3>
+                <h5>Paprika original soundtrack <br>2007</h5>
+                <p>就如同宮崎駿之於久石讓，提到今敏就必須要提起平澤進。身為日本Techno-pop的音樂始祖，平澤進的音樂充滿東洋的浪漫情懷，與迷幻電子和諧的交融，形成一種如夢如醉的獨特氛圍。本片主題曲《白虎野の娘》則是平澤進的代表作之一，曲中如宴醉一般的歡愉氣息以及夢囈般的歌詞總令人愛不忍釋，這點倒是與影片中洋溢著熱情迷幻的情節相互襯托。
+                </p>
+                <hr class="mt-5 mb-1">
+                <ul class="song-list">
+                    <li><i class="far fa-play-circle"></i>Parade</li>
+                    <li><i class="far fa-play-circle"></i>Mediational Field</li>
+                    <li><i class="far fa-play-circle"></i>The Blind Spot in a Carridor</li>
+                    <li><i class="far fa-play-circle"></i>Welcome to the Circus</li>
+                    <li><i class="far fa-play-circle"></i>A Tree in the Dark</li>
+                    <li><i class="far fa-play-circle"></i>Escape</li>
+                    <li><i class="far fa-play-circle"></i>Lounge</li>
+                    <li><i class="far fa-play-circle"></i>The Shadow</li>
+                    <li><i class="far fa-play-circle"></i>A Drop Filled with Memories</li>
+                    <li><i class="far fa-play-circle"></i>Chaser</li>
+                    <li><i class="far fa-play-circle"></i>Prediction</li>
+                </ul>
+            </div>
+        </article>
+    </main>
+    <section class="wrapper btplayer">
+        <div class="player d-flex">
+            <i class="far fa-play-circle main-color"></i>
+            <i class="fas fa-pause-circle main-color"></i>
+            <div>
+                <h4> <span class="song-title">Parade</span></h4>
+                <p>Paprika original soundtrack</p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="dist/js/jquery.simpleaudioplayer.js"></script>
+
+    </script>
+    <script>
+        $(".nav-bar").click(function () {
+            $(".nav-bar ul").toggleClass("active")
+        })
+
+        $(".language").mouseenter(function () {
+            $(".fa-globe-americas").addClass("active")
+            $(".language ul").addClass("active")
+        }).mouseleave(function () {
+            $(".fa-globe-americas").removeClass("active")
+            $(".language ul").removeClass("active")
+        })
+
+        $(".song-list li").click(function () {
+            let songName = $(this).text()
+            console.log(songName)
+            $(".song-title").text(songName)
+        })
+
+        $(".social .fas").click(function () {
+            $(this).toggleClass("active animate__animated animate__tada")
+        })
+
+        $(".fa-heart").click(function () {
+            let number = Number($("#people").text())
+            $("#people").text(number + 1)
+            let check = $(".fa-heart").hasClass("active")
+            // console.log(check)
+            if (check) {
+                $("#people").text(number + 1)
+            }
+            else {
+                $("#people").text(number - 1)
+            }
+        })
+
+        $(".more").click(function () {
+            $(".musician div").toggleClass("active")
+            let check = $(".musician div").hasClass("active")
+            console.log(check)
+            if (check) {
+                $(".more").empty().html(`Close <i class="fas fa-times"></i>`)
+            }
+            else {
+                $(".more").empty().html(`See More <i class="fas fa-arrow-down"></i>`)
+            }
+
+        })
+
+        $(".song-list li").click(function () {
+            $(this).addClass("active").siblings().removeClass("active")
+        })
+
+
+        // <i class="fas fa-pause-circle"></i>
+
+
+    </script>
+</body>
+
+</html>

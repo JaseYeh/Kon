@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Kon Satoshi</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9d96d988db.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="css/kon.css">
+
+    <style>
+        body {
+            background: url("img/background.svg") fixed top no-repeat;
+            background-size: cover;
+        }
+
+
+
+        /* 介紹 */
+        main {
+            display: flex;
+            padding-top: 50px;
+            justify-content: space-between;
+        }
+
+        main aside {
+            width: 30%;
+            margin-top: 50px;
+        }
+
+        aside p {
+            font-size: 20px;
+            letter-spacing: 5px;
+            margin-left: 3px;
+            margin-top: 5px;
+        }
+
+        aside ul {
+            list-style: none;
+            margin-top: 50px;
+            padding-left: 20px;
+        }
+
+        aside ul li {
+            margin: 20px 0;
+
+
+        }
+
+        aside ul li a {
+            color: #222;
+            font-weight: 700;
+            padding-left: 10px;
+            border-left: 3px solid transparent;
+            font-size: 18px;
+
+        }
+
+        aside ul li a:hover {
+            border-left: 3px solid #0063AD;
+
+        }
+
+        .intro {
+            width: 65%;
+            margin-bottom: 100px;
+            margin-right: 50px;
+            margin-top: 70px;
+
+        }
+
+        .intro figure {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+
+        }
+
+        .intro figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intro-top {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .intro-top div h3 {
+            font-size: 2em;
+            font-weight: 500;
+        }
+
+        .intro-top div .min {
+            font-size: 40px;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .intro-top div p {
+            margin-left: 5px;
+            margin: 20px 0;
+            color: #555;
+        }
+
+
+        .intro-quote {
+            font-size: 2em;
+            font-weight: 700;
+            border-left: 3px solid #0063AD;
+            padding-left: 10px;
+            margin-bottom: 50px;
+            font-family: 'Noto Serif TC', serif;
+
+        }
+
+
+        .intro-quote p {
+            margin: 20px 0;
+            line-height: 1;
+        }
+
+
+
+        /* 生平 */
+        .biography {
+            background: #111;
+            color: #fff;
+            padding-top: 100px;
+        }
+
+        .biography h3,
+        .art-list h3 {
+            font-size: 3em;
+            font-weight: 500;
+
+        }
+
+        .biography h4,
+        .art-list h4 {
+            margin: 20px 0;
+            letter-spacing: 5px;
+            font-weight: 400;
+            font-size: 1.2em;
+        }
+
+
+        .timeline-section {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            margin-bottom: 80px;
+
+        }
+
+        .timeline {
+            width: 600px;
+        }
+
+
+        .timeline ul {
+            margin-left: 50px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+
+        .timeline ul li {
+            padding: 15px 50px;
+            text-indent: -14px;
+            cursor: pointer;
+        }
+
+        .timeline ul li:hover {
+            background: #444;
+        }
+
+        .timeline .dot {
+            font-size: 4px;
+            margin-right: 10px;
+        }
+
+        .timeline ul li:hover .dot {
+            color: #0063AD;
+            background: #444;
+
+        }
+
+        .timeline .dot.active {
+            color: #0063AD;
+        }
+
+
+        .timeline-card {
+            width: 60%;
+            min-width: 250px;
+            height: 300px;
+            background-color: #ccc;
+            transition: height .5s;
+            overflow: hidden;
+            position: relative;
+
+        }
+
+
+        .timeline-card.active {
+            width: 60%;
+            height: 500px;
+            background-color: #ccc;
+            padding: 0 25px;
+            border-radius: 8px;
+            transition: height .5s;
+
+        }
+
+        .btn-leave {
+            color: #000;
+            font-size: 30px;
+            line-height: 40px;
+            text-align: center;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            z-index: 200;
+            color: #fff;
+            transition: .5s;
+
+        }
+
+        .btn-leave.active {
+            border: 2px solid #000;
+            color: #000;
+        }
+
+
+
+        .card-container {
+            color: #000;
+
+        }
+
+        .card-content {
+            display: none;
+            transition: 1s;
+            padding: 20px
+        }
+
+        .card-content.default {
+            font-weight: 600;
+            padding: 0;
+            background: url("img/artworks.jpg") top center no-repeat;
+            background-position: cover;
+            background-size: 100%;
+            height: 300px;
+            text-align: right;
+            padding-right: 70px;
+            padding-top: 26px;
+            color: #fff;
+        }
+
+
+
+        .card-content h4 {
+            letter-spacing: 2px;
+            font-size: 2em;
+            color: #0063AD
+        }
+
+        .card-content.active {
+            display: block;
+            animation: fadeIn 1.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+
+
+        .said {
+            background: url("img/actress1.jpg") fixed no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            padding: 40px 0;
+            transition: 1s;
+
+
+        }
+
+        .said p {
+            text-shadow: 0 0 5px #000;
+        }
+
+        .said .jp {
+            font-family: 'Sawarabi Mincho', sans-serif;
+            font-weight: 500;
+            font-size: 1.5em;
+        }
+
+
+
+        .art-list {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .art-list div {
+            justify-content: space-around;
+
+        }
+
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+
+            main aside {
+                text-align: center;
+                width: 100%;
+            }
+
+            aside ul {
+                padding: 0;
+                margin: 20px 0;
+            }
+
+            aside ul li {
+                display: inline-block;
+                padding: 0;
+
+            }
+
+            aside ul li a {
+                padding: 0 10px;
+                border-bottom: 3px solid transparent;
+                border-left: 0;
+            }
+
+            aside ul li a:hover {
+
+                border-bottom: 3px solid #0063AD;
+                border-left: 0;
+
+            }
+
+            .intro {
+                width: 100%;
+                margin: 30px auto;
+            }
+
+            .intro-top {
+                flex-direction: column;
+            }
+
+            .intro-top div p {
+                text-align: center;
+            }
+
+            .intro-top div {
+                margin-left: -24px !important;
+            }
+
+            .timeline-section {
+                flex-direction: column-reverse;
+            }
+
+            .timeline {
+                width: 100%
+            }
+
+            .timeline ul {
+                margin: 0;
+                margin-right: 20px;
+            }
+
+
+            .timeline-card {
+                width: 90%;
+                height: 200px;
+                background-color: #ccc;
+                border-radius: 8px;
+                overflow: hidden;
+                position: relative;
+                margin: 20px 0;
+
+            }
+
+
+            .timeline-card.active {
+                min-height: 400px;
+                width: 90%;
+
+            }
+
+            .said {
+            height: 200px;
+            padding: 20px 0;
+            transition: 1s;
+
+
+        }
+
+        .said p {
+            text-shadow: 0 0 5px #000;
+        }
+
+        .said .jp {
+            font-family: 'Sawarabi Mincho', sans-serif;
+            font-weight: 500;
+            font-size: 1.5em;
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="wrapper">
+            <a href="index.html"><img src="img/logo.png" alt=""></a>
+            <ul class="main-nav hide-m">
+
+                <li><a href="intro.html" class="active">About</a></li>
+                <li><a href="artworks.html">Artworks</a></li>
+                <li><a href="soundtrack.html">Soundtrack</a></li>
+            </ul>
+            <div class="language hide-m">
+                <i class="fas fa-globe-americas"></i>
+                <ul>
+                    <li>中文</li>
+                    <li>English</li>
+                </ul>
+            </div>
+            <div class="hide-w nav-bar"><i class="fas fa-bars"></i>
+                <ul>
+                    <li><a href="intro.html">About</a></li>
+                    <li><a href="artworks.html">Artworks</a></li>
+                    <li><a href="soundtrack.html">Soundtrack</a></li>
+                </ul>
+            </div>
+    </header>
+    <main class="wrapper">
+        <aside>
+            <h2>About</h2>
+            <p>關於今敏</p>
+
+            <ul>
+                <li><a href="#biography" id="btn-biography">生平</a></li>
+                <li><a href="#artList" id="btn-artlist">作品列表</a></li>
+            </ul>
+        </aside>
+        <article class="intro">
+            <div class="intro-top">
+                <figure>
+                    <img src="img/kon.jpg" alt="">
+                </figure>
+                <div class="ml-4">
+                    <h3><span class="min">今敏</span> Kon Satoshi</h3>
+                    <p>1963/10/12－2010/8/24</p>
+                </div>
+            </div>
+            <div class="intro-quote main-color">
+
+                <p>所謂的動畫，</p>
+                <p>就是要想像出真人電影做不出來的東西，</p>
+                <p>那才是作為動畫的價值。</p>
+
+
+
+            </div>
+            <div class="intro-content">
+                <p> 今敏是日本動畫導演、動畫師、編劇和漫畫家，同時也是日本動畫從業人員協會會員。今敏出生於北海道札幌市，自武藏野美術大學造形研究科視覺傳達設計系畢業後，先是以漫畫家的身分出道。今敏早期主要跟隨大友克洋的工作團隊，曾因而擔任過電影的共同編劇，他也在這個時候接觸動畫工作。
+                </p>
+                <p>今敏在其多部作品中處理了不同的題材，不過其中都有個性鮮明但貼近現實生活的人物、角色精神層面的探討描寫以及夢境與現實間的曖昧關係等元素。這讓他成為具有獨特創作風格的日本動畫導演，並在國際間獲得眾多獎項。除了動畫製作工作外，今敏還協助創立了日本動畫從業人員協會，希望能藉此改善年輕動畫師的工作條件。
+                </p>
+            </div>
+
+
+        </article>
+
+    </main>
+
+
+    <article class="biography" id="biography">
+        <h3 class="text-center">Biography</h3>
+        <h4 class="text-center">/ 生平 /</h4>
+        <div class="timeline-section  wrapper mt-5">
+
+            <section class="timeline-card ">
+                <div class="btn-leave"><i class="fas fa-arrow-right"></i></div>
+
+                <div class="card-container" id="card-container">
+
+                    <div class="card-content default active">
+                        <p>Click to see more</p>
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <h4>1963</h4>
+
+                        <p>今敏於1963年10月12日出生在日本北海道札幌市，不過因為父親工作的緣故，使得他4歲到小學四年級期間生活在位於北海道東部的釧路市。爾後又因父親工作遭到調動，今敏在小學四年級到中學二年級的這段期間，全家搬至札幌市生活。在札幌市居住時，他和漫畫家滝澤聖峰是同班同學，後來兩人仍是相當親密的朋友。在中學四年級時，今敏一家又從札幌市搬回到釧路市。之後他就讀北海道釧路湖陵高等學校，畢業前決定要成為一名原畫師。連同往後前往東京都讀書的經歷，這樣不斷來往各處對他後來作品的節奏有很大影響，促成結合想像與現實的作品風格。
+                        </p>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <h4>1987</h4>
+
+                        <p>1987年今敏自武藏野美術大學畢業</p>
+                        <p>今敏就讀大學期間先是從漫畫創作開始，1984年他以學生身分向講談社著名的漫畫雜誌《週刊Young Magazine》投稿個人短篇作品《虜》（虜
+                            -とりこ-），並以該漫畫獲得《週刊Young
+                            Magazine》舉辦的第10屆年度千葉徹彌賞優秀新人獎項。以此為契機，他在隔年於講談社的雜誌上正式出道成為職業漫畫家，也曾擔任過著名漫畫家大友克洋的漫畫助手。</p>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <h4>1990</h4>
+
+                        <p>講談社於1990年推出今敏個人第一部漫畫單行本《海歸線》</p>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <h4>1997</h4>
+
+                        <p>1997年，今敏順利推出擔任動畫導演後的處女作《藍色恐懼》，動畫基於小說作家竹內義和創作的同名小說改編而成。這部是MADHOUSE首次製作今敏執導的動畫作品，後來受邀在柏林國際影展作為非競賽影片播放。《藍色恐懼》劇情以一名流行偶像為中心，描寫所發生的一連串懸疑故事。今敏最初不滿意竹內義和的原始劇本，並要求修改原作故事。最後在保證製作主軸須維持小說的偶像、恐怖和跟蹤狂三個要素後，今敏獲准改編腳本內容。電影的劇本後來是今敏和編劇村井貞之共同改寫而成，在這之前村井貞之便以現實世界和想像世界間的模糊邊界為作品題材。
+                        </p>
+
+                    </div>
+
+                    <div class="card-content">
+                        <h4>2002</h4>
+                        <p>1999年他開始投入下部電影的創作，並在2000年時製作完成。不過一直到2002年，今敏的的第二部電影《千年女優》才正式上映，還在同年出版了著作《KON'S
+                            TONE?「千年女優」之道》（KON’S
+                            TONE?「千年女優」への道）。《千年女優》的動畫劇本同樣是今敏和編劇村井貞之共同創作[22]，故事的主軸描寫一名具傳奇色彩的女演員選擇在事業生涯的最高巔峰時，突然神秘地向社會大眾宣布隱退。電影中除了保留虛幻和現實間的無縫連接外，同時還增添了許多視覺陷阱和時間感喪失等概念。
+                        </p>
+                    </div>
+
+                    <div class="card-content">
+                        <h4>2003</h4>
+                        <p>2003年，其第三部作品《東京教父》正式上映。《東京教父》的電影劇本是今敏與信本敬子共同創作，故事主軸講述三名無家可歸的露宿者在聖誕節前夕，於東京街頭發現一個棄嬰，三人隨後為了棄嬰而出發尋找她的親生父母[28]。電影將焦點集中在無家可歸的露宿者、被拋棄的嬰兒等社會題材，並用喜劇的方式聯繫各主題的故事發展。《東京教父》花費的製作成本相較於前兩部電影還要來得更多，總計花費約3億日圓的預算。《東京教父》後來和《千年女優》同時獲得2003年第75屆奧斯卡金像獎的奧斯卡最佳動畫片獎第一次入圍，但並沒有獲選至最終入圍名單。
+                        </p>
+                    </div>
+
+                    <div class="card-content">
+                        <h4>2004</h4>
+                        <p>2004年，《東京教父》的數碼多功能影音光碟發售後不久，由今敏初次執導、共計13集的動畫作品《妄想代理人》正式在電視上播出。今敏在《妄想代理人》的故事內容中，重新強調想像與現實間的交互關係，並加入有關工作等種種社會性題材的描寫[29]。這些故事的來源許多是今敏過去覺得故事和設定不錯，但因沒有適合表現的時機而未採納的電影構想，經長期擱置後將這些想法重新整理，並納入電視動畫製作中
+                        </p>
+                    </div>
+
+                    <div class="card-content">
+                        <h4>2006</h4>
+                        <p>今敏在2006年推出改編自筒井康隆同名作品的《盜夢偵探》，這也實現了今敏長年以來的構想。
+
+                            《盜夢偵探》的電影製作獲得原作者筒井康隆的支持，故事中心圍繞在一種新形式的心理治療，能透過儀器分析患者的夢境，進一步治療精神疾病患者。《盜夢偵探》很快便被視為今敏非常成功的電影作品，認為這部作品成功將幻想與現實相互融合的構想表現至極致，也因而獲得多項電影獎項和參加多次影展。這包括獲選成為2006年角逐金獅獎的第63屆威尼斯國際電影節影展競賽片之一，這也是該屆唯一一部入選競賽影片的動畫作品；以及入圍第80屆奧斯卡金像獎的奧斯卡最佳動畫片獎第一次入圍，但並沒有獲選至最終入圍名單。《盜夢偵探》的故事內容引起多方的討論和解釋，今敏在總結這部電影時表示「一切但根本的故事已經改變」；同時該電影也類似今敏過去的構想，在作品中同樣著重夢境與現實間的互動與影響。
+                        </p>
+                    </div>
+
+                    <div class="card-content">
+                        <h4>2010</h4>
+                        <p>2010年，今敏開始出現身體不適，同年5月確診罹患晚期胰臟癌。今敏認為這可能是工作期間長期仰賴酒精、咖啡因、尼古丁而工作所造成的結果，考慮醫生診察後告知僅可能存活半年的時間，今敏選擇在自己住家中度過剩餘的人生，並繼續從事更新官方部落格等活動。至此之後，除在部落格上敘述日常生活，他還開始整理身旁物品。不過癌症在確診後數月便迅速惡化，對於自己的病情，今敏還是積極面對。不過他不想讓社會大眾或新聞媒體知道自己的病情發展，部分原因在於對於自己的身體逐漸消瘦、和死後的遺體可能被討論而感到尷尬。
+                        </p>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+            </section>
+            <section class="timeline">
+                <table></table>
+                <ul>
+                    <li><span class="dot"><i class="fas fa-circle"></i></span> 1963 出生於北海道札幌市</li>
+                    <li><span class="dot"><i class="fas fa-circle"></i></span> 1987 自武藏野美術大學畢業</li>
+                    <li><span class="dot"><i class="fas fa-circle"></i></span> 1990 推出個人第一部漫畫單行本《海歸線》</li>
+                    <li><span class="dot"><i class="fas fa-circle"></i></span> 1997 推出擔任動畫導演後的處女作《藍色恐懼》</li>
+                    <li><span class="dot"><i class="fas fa-circle"></i></span> 2002 第二部電影《千年女優》正式上映</li>
+                    <li><span class="dot"><i class="fas fa-circle"></i></span> 2003 第三部作品《東京教父》正式上映。</li>
+                    <li><span class="dot"><i class="fas fa-circle"></i></span> 2004 初次執導、共計13集的動畫作品《妄想代理人》
+                        正式在電視上播出。</a></li>
+                    <li><span class="dot"><i class="fas fa-circle"></i></span> 2006 推出改編自筒井康隆同名作品的《盜夢偵探》</li>
+                    <li><span class="dot"><i class="fas fa-circle"></i></span> 2010 開始出現身體不適，同年5月確診罹患晚期胰臟癌</li>
+                </ul>
+            </section>
+
+        </div>
+        <section class="said">
+            <div class="text-center">
+                <p class="jp">世界中に存する善きものすべてに感謝したい気持ちと共に、<br>
+                    筆をおくことにしよう。じゃ、お先に。</p>
+                <p>我要懷著對世上所有美好事物的謝意，放下我的筆了，先走一步了。</p>
+            </div>
+        </section>
+    </article>
+
+    <article class="art-list wrapper" id="artList">
+        <h3 class="text-center">Artworks</h3>
+        <h4 class="text-center">/作品列表/</h4>
+        <div class="d-flex">
+
+            <ul>
+                <li>《藍色恐懼》 1997</li>
+                <li>《千年女優》 2001</li>
+                <li>《東京教父》 2003</li>
+                <li>《妄想代理人》 2004</li>
+                <li>《盜夢偵探》 2006</li>
+                <li>《早安》 2007</li>
+                <li>《夢想機械》 未完成</li>
+            </ul>
+            <ul>
+                <li>《夢的化石》 1984</li>
+                <li>《海歸線》 1984</li>
+                <li>《國際恐怖公寓》 1990</li>
+                <li>《六翼天使2億6661萬3336之翼》 1995</li>
+                <li>《OPUS》 1995</li>
+            </ul>
+        </div>
+
+    </article>
+    <div class="backTop" id="backTop">
+        <i class="fas fa-angle-up"></i>
+    </div>
+
+    <footer>
+        <p>2020 All right reserved.</p>
+    </footer>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        $(".nav-bar").click(function () {
+            $(".nav-bar ul").toggleClass("active")
+        })
+
+        $(".language").mouseenter(function () {
+            $(".fa-globe-americas").addClass("active")
+            $(".language ul").addClass("active")
+        }).mouseleave(function () {
+            $(".fa-globe-americas").removeClass("active")
+            $(".language ul").removeClass("active")
+        })
+
+
+        // 顯示卡片內容
+        $(".timeline ul li").click(function () {
+            index = $(this).index()
+            console.log(index)
+            $(".timeline-card").addClass("active")
+            $(".card-content").eq(index + 1).addClass("active").siblings().removeClass("active")
+            $(".dot").removeClass("active")
+            $(this).find(".dot").addClass("active")
+            $(".btn-leave").empty().html(`<i class="fas fa-times"></i>`).addClass("active")
+
+
+        })
+
+        // 關閉卡片
+        $(".btn-leave").click(function () {
+            $(".timeline-card").removeClass("active")
+            $(".card-content").eq(0).addClass("active").siblings().removeClass("active")
+            $(".dot").removeClass("active")
+            $(".btn-leave").empty().html(`<i class="fas fa-arrow-right"></i>`).removeClass("active")
+
+        })
+
+
+
+        $("#btn-biography").click(function () {
+
+
+            $("html").animate({
+                scrollTop: $("#biography").offset().top
+            }, 500)
+
+        })
+
+        $("#btn-artlist").click(function () {
+
+            position = $("#artList").offset().top
+            console.log(position)
+
+            $("html").animate({
+                scrollTop: $("#artList").offset().top
+            }, 500)
+
+        })
+
+        $("#backTop").click(function () {
+
+            $("html").animate({
+                scrollTop: 0
+            }, 500)
+
+        })
+
+        $(window).scroll(function () {
+            let Top = $(this).scrollTop()
+
+            if (Top >= 20) {
+                $("#backTop").addClass("active")
+            }
+            else {
+                $("#backTop").removeClass("active")
+            }
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

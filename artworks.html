@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9d96d988db.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/kon.css">
+</head>
+<style>
+    .content-scroll::-webkit-scrollbar {
+        width: 10px;
+
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #fff;
+    }
+
+    /* the new scrollbar will have a flat appearance with the set background color */
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    /* this will style the thumb, ignoring the track */
+
+    /* ::-webkit-scrollbar-button {
+        background-color: #7c2929;
+    } */
+
+    /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+
+    main {
+        padding-top: 50px;
+    }
+
+    main h2 {
+        padding-top: 50px;
+    }
+
+    main .title-name {
+        font-size: 20px;
+        letter-spacing: 5px;
+        margin-left: 3px;
+        margin-top: 5px;
+        margin-bottom: 80px;
+    }
+
+    .card-title {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        height: 200px;
+        overflow: hidden;
+        transition: 1s;
+        cursor: pointer;
+    }
+
+    .title-text {
+        color: #fff;
+        vertical-align: middle;
+        background: rgba(17, 17, 17, 0.9);
+        width: 320px;
+        height: 200px;
+        transform: translateX(-300px);
+        transition: .5s;
+        padding-top: 95px;
+        padding-left: 20px
+    }
+
+    .title-text h3 {
+        font-size: 2em;
+    }
+
+    .title-text h4 {
+        font-size: 1em;
+    }
+
+    .card-title:hover {
+        background-size: 120%;
+    }
+
+    .card-title:hover .title-text {
+        transform: translateX(0);
+    }
+
+    .plus {
+        color: #000;
+        font-size: 3em;
+        font-weight: 300;
+        margin-right: 40px;
+        transition: .5s;
+    }
+
+    .plus.active {
+        transform: rotate(315deg);
+    }
+
+    .card-title:hover .plus {
+        color: #fff;
+    }
+
+    .card1 {
+        background: url("img/perfect-blue.jpg") center top 30% no-repeat;
+        background-size: 100%;
+    }
+
+    .card2 {
+        background: url("img/actress2.jpg") center center no-repeat;
+        background-size: 100%;
+    }
+
+    .card3 {
+        background: url("img/tokyo.png") center top 60% no-repeat;
+        background-size: 100%;
+    }
+
+    .card4 {
+        background: url("img/agent.png") center center no-repeat;
+        background-size: 100%;
+
+    }
+
+    .card5 {
+        background: url("img/paprika2.jpg") center no-repeat;
+        background-size: 100%;
+
+    }
+
+    .card6 {
+        background: url("img/ohayo2.jpg") center top 20% no-repeat;
+        background-size: 100%;
+
+    }
+
+    .card-content {
+        height: 0px;
+        transition: 1s;
+        overflow: hidden;
+    }
+
+    .card-content.active {
+        height: 100%;
+        transition: 1s;
+    }
+
+    .card-content .content-scroll {
+        width: 0%;
+        margin: 10px auto 20px;
+        height: 0px;
+        overflow-y: scroll;
+        border: 1px solid #000;
+        transition: width .5s .5s, height .5s, opacity .5s .5s;
+        background: rgba(255, 255, 255, 0.4);
+        opacity: 0;
+
+    }
+
+    .content-scroll.active {
+        height: 350px;
+        width: 100%;
+        opacity: 1;
+        transition: width .5s, height .5s .5s, opacity .5s;
+    }
+
+    .card-content .btn-close {
+        width: 150px;
+        height: 0px;
+        text-align: center;
+        background: #111;
+        margin: 0 auto 50px;
+        color: #fff;
+        transition: .5s;
+        line-height: 30px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .btn-close:hover {
+        background: #444
+    }
+
+    .card-content .btn-close.active {
+        height: 30px;
+        transition: .5s .5s;
+
+    }
+
+    @media (max-width: 768px){
+        main h2, .title-name{
+            text-align: center;
+        }
+    }
+</style>
+
+<body>
+
+    <header>
+        <nav class="wrapper">
+            <a href="index.html"><img src="img/logo.png" alt=""></a>
+            <ul class="main-nav hide-m">
+
+                <li><a href="intro.html">About</a></li>
+                <li><a href="artworks.html">Artworks</a></li>
+                <li><a href="soundtrack.html">Soundtrack</a></li>
+            </ul>
+            <div class="language hide-m">
+                <i class="fas fa-globe-americas"></i>
+                <ul>
+                    <li>中文</li>
+                    <li>English</li>
+                </ul>
+            </div>
+            <div class="hide-w nav-bar"><i class="fas fa-bars"></i>
+                <ul>
+                    <li><a href="intro.html">About</a></li>
+                    <li><a href="artworks.html" class="active">Artworks</a></li>
+                    <li><a href="soundtrack.html">Soundtrack</a></li>
+                </ul>
+            </div>
+    </header>
+    <main class="wrapper">
+        <h2>Artworks</h2>
+        <p class="title-name">作品介紹</p>
+
+        <article class="artcard ">
+            <div class="card-title card1">
+
+                <div class="title-text">
+                    <h3>Perfect Blue</h3>
+                    <h4>藍色恐懼 1997</h4>
+                </div>
+                <div class="plus">+</div>
+            </div>
+
+            <div class="card-content">
+                <div class="content-scroll">
+                    <p>
+                        偶像歌手「未麻」轉型為演員後，不只恐嚇威脅不斷，還有人架設網站「未麻的部屋」，鉅細靡遺她的行程與心情。未麻內心早已困惑不安，拍完強暴劇碼和露點寫真後更逐漸迷失自我，而周遭接二連三的兇殺案，更讓未麻產生看見另一個自己的幻覺……
+                    </p>
+
+                    <p>
+                        名義上為改編竹內義和的同名小說，《藍色恐懼》其實只留下原作的三大要素──偶像、恐怖、跟蹤狂。彈性的劇情給今敏發揮的自由，他在本片中以強烈美術和獨特剪輯，呈現未麻的混亂意識與因而迷離的主觀現實。沒有日本動畫界死抱的三元素「機器人、美少女、SF」，而且在預算不高的情況下，今敏卻拍出心理驚悚片（註
+                        1）的最佳動畫範例，並奠定他虛實交融、多重敘事、懸疑驚悚，著重人物心理的鮮明風格。
+                    </p>
+
+                    <p>
+                        未麻是偶像，是演員，也是會到超市買牛奶和魚飼料的普通女孩，剛開始她還能順利轉換角色，因此台上是台上，台下是台下，界限涇渭分明，觀眾得以分辨到哪兒是哪。然而，當環境和事件開始與未麻的願望牴觸 —
+                        —
+                        強暴戲和露點寫真，再加上未麻演的戲與她本身或她的現實生活共鳴 — —
+                        情緒崩潰、精神耗弱，還有連續殺人事件，她變得分不清戲劇、妄想／夢境，和現實之間的界限，場景間的轉換跟著越來越快，越來越意識流，觀眾只能被扯進這模稜兩可，虛實難辨的漩渦，甚至和未麻一樣，得依靠詭異的網站「未麻的部屋」來死命抓著「原來去了原宿啊」之類即使為假也沒關係的日常。
+                    </p>
+
+                    <p>
+                        未麻究竟做了什麼、沒做過什麼？她殺了人嗎？未麻本身的混亂之外，還加上未麻的瘋狂粉絲 — — 「眼距過寬男」Me-Mania
+                        的主觀敘事，哪些是他的妄想，哪些是真實？人是他殺的嗎？到底是誰殺了誰？
+                    </p>
+                    <p>
+                        虛實交融和多重敘事產生不確定，不確定則營造出懸疑驚悚，但真正令我難以忍受的東西其實是那些確定、扎實，由「凝視」感受到的暴力。強暴一景中，未麻在舞台上被臨演圍困，舞台下有觀看的工作人員，攝影機從四面八方對準未麻，還有螢幕前的觀眾，一同眼睜睜看著未麻被壓制在地，聲嘶力竭、拚命掙扎，最終被侵犯，並且被一大堆眼睛看著自己被侵犯。鏡頭時而以未麻的視角，時而對準未麻，時而對準對準未麻的鏡頭，觀者一方面宛如置身未麻之恐怖處境，同時又被迫抽離，觀看她被施暴，成為施暴者一員。成語曰：「怵目驚心」、「卒不忍睹」，因為有時候「看」令人無法忍受。今敏在《千年女優》的訪談中曾說：「電影不是用看的，而是要用身體來體會。」《藍色恐懼》已用毫不手軟的視覺暴力和相得益彰的剪輯手法，成功做到這一點。
+                    </p>
+                    <p>
+                        達倫・艾洛諾夫斯基（Darren Aronofsky）毫不諱言自己對《藍色恐懼》的喜愛，除了買下翻拍版權，在《噩夢輓歌》（Requiem for a Dream,
+                        2000）中更使用完全相同的分鏡（註
+                        2），而讓他家喻戶曉的《黑天鵝》（Black Swan, 2010）看來更是處處有《藍色恐懼》的影響……
+                    </p>
+                </div>
+                <p class="btn-close">CLOSE</p>
+
+
+            </div>
+
+
+        </article>
+
+        <article class="artcard ">
+            <div class="card-title card2">
+
+                <div class="title-text">
+                    <h3>Millennium <br>Actress</h3>
+                    <h4>千年女優 2001</h4>
+                </div>
+                <div class="plus">+</div>
+            </div>
+            <div class="card-content">
+                <div class="content-scroll">
+                    <p>
+                        偶像歌手「未麻」轉型為演員後，不只恐嚇威脅不斷，還有人架設網站「未麻的部屋」，鉅細靡遺她的行程與心情。未麻內心早已困惑不安，拍完強暴劇碼和露點寫真後更逐漸迷失自我，而周遭接二連三的兇殺案，更讓未麻產生看見另一個自己的幻覺……
+                    </p>
+
+                    <p>
+                        名義上為改編竹內義和的同名小說，《藍色恐懼》其實只留下原作的三大要素──偶像、恐怖、跟蹤狂。彈性的劇情給今敏發揮的自由，他在本片中以強烈美術和獨特剪輯，呈現未麻的混亂意識與因而迷離的主觀現實。沒有日本動畫界死抱的三元素「機器人、美少女、SF」，而且在預算不高的情況下，今敏卻拍出心理驚悚片（註
+                        1）的最佳動畫範例，並奠定他虛實交融、多重敘事、懸疑驚悚，著重人物心理的鮮明風格。
+                    </p>
+
+                    <p>
+                        未麻是偶像，是演員，也是會到超市買牛奶和魚飼料的普通女孩，剛開始她還能順利轉換角色，因此台上是台上，台下是台下，界限涇渭分明，觀眾得以分辨到哪兒是哪。然而，當環境和事件開始與未麻的願望牴觸 —
+                        —
+                        強暴戲和露點寫真，再加上未麻演的戲與她本身或她的現實生活共鳴 — —
+                        情緒崩潰、精神耗弱，還有連續殺人事件，她變得分不清戲劇、妄想／夢境，和現實之間的界限，場景間的轉換跟著越來越快，越來越意識流，觀眾只能被扯進這模稜兩可，虛實難辨的漩渦，甚至和未麻一樣，得依靠詭異的網站「未麻的部屋」來死命抓著「原來去了原宿啊」之類即使為假也沒關係的日常。
+                    </p>
+
+                    <p>
+                        未麻究竟做了什麼、沒做過什麼？她殺了人嗎？未麻本身的混亂之外，還加上未麻的瘋狂粉絲 — — 「眼距過寬男」Me-Mania
+                        的主觀敘事，哪些是他的妄想，哪些是真實？人是他殺的嗎？到底是誰殺了誰？
+                    </p>
+                    <p>
+                        虛實交融和多重敘事產生不確定，不確定則營造出懸疑驚悚，但真正令我難以忍受的東西其實是那些確定、扎實，由「凝視」感受到的暴力。強暴一景中，未麻在舞台上被臨演圍困，舞台下有觀看的工作人員，攝影機從四面八方對準未麻，還有螢幕前的觀眾，一同眼睜睜看著未麻被壓制在地，聲嘶力竭、拚命掙扎，最終被侵犯，並且被一大堆眼睛看著自己被侵犯。鏡頭時而以未麻的視角，時而對準未麻，時而對準對準未麻的鏡頭，觀者一方面宛如置身未麻之恐怖處境，同時又被迫抽離，觀看她被施暴，成為施暴者一員。成語曰：「怵目驚心」、「卒不忍睹」，因為有時候「看」令人無法忍受。今敏在《千年女優》的訪談中曾說：「電影不是用看的，而是要用身體來體會。」《藍色恐懼》已用毫不手軟的視覺暴力和相得益彰的剪輯手法，成功做到這一點。
+                    </p>
+                    <p>
+                        達倫・艾洛諾夫斯基（Darren Aronofsky）毫不諱言自己對《藍色恐懼》的喜愛，除了買下翻拍版權，在《噩夢輓歌》（Requiem for a Dream,
+                        2000）中更使用完全相同的分鏡（註
+                        2），而讓他家喻戶曉的《黑天鵝》（Black Swan, 2010）看來更是處處有《藍色恐懼》的影響……
+                    </p>
+                </div>
+                <p class="btn-close">CLOSE</p>
+
+
+            </div>
+        </article>
+
+
+
+        <article class="artcard ">
+            <div class="card-title card3">
+
+                <div class="title-text">
+                    <h3>Tokyo Godfather</h3>
+                    <h4>東京教父 2003</h4>
+                </div>
+                <div class="plus">+</div>
+            </div>
+            <div class="card-content">
+                <div class="content-scroll">
+                    <p>
+                        偶像歌手「未麻」轉型為演員後，不只恐嚇威脅不斷，還有人架設網站「未麻的部屋」，鉅細靡遺她的行程與心情。未麻內心早已困惑不安，拍完強暴劇碼和露點寫真後更逐漸迷失自我，而周遭接二連三的兇殺案，更讓未麻產生看見另一個自己的幻覺……
+                    </p>
+
+                    <p>
+                        名義上為改編竹內義和的同名小說，《藍色恐懼》其實只留下原作的三大要素──偶像、恐怖、跟蹤狂。彈性的劇情給今敏發揮的自由，他在本片中以強烈美術和獨特剪輯，呈現未麻的混亂意識與因而迷離的主觀現實。沒有日本動畫界死抱的三元素「機器人、美少女、SF」，而且在預算不高的情況下，今敏卻拍出心理驚悚片（註
+                        1）的最佳動畫範例，並奠定他虛實交融、多重敘事、懸疑驚悚，著重人物心理的鮮明風格。
+                    </p>
+
+                    <p>
+                        未麻是偶像，是演員，也是會到超市買牛奶和魚飼料的普通女孩，剛開始她還能順利轉換角色，因此台上是台上，台下是台下，界限涇渭分明，觀眾得以分辨到哪兒是哪。然而，當環境和事件開始與未麻的願望牴觸 —
+                        —
+                        強暴戲和露點寫真，再加上未麻演的戲與她本身或她的現實生活共鳴 — —
+                        情緒崩潰、精神耗弱，還有連續殺人事件，她變得分不清戲劇、妄想／夢境，和現實之間的界限，場景間的轉換跟著越來越快，越來越意識流，觀眾只能被扯進這模稜兩可，虛實難辨的漩渦，甚至和未麻一樣，得依靠詭異的網站「未麻的部屋」來死命抓著「原來去了原宿啊」之類即使為假也沒關係的日常。
+                    </p>
+
+                    <p>
+                        未麻究竟做了什麼、沒做過什麼？她殺了人嗎？未麻本身的混亂之外，還加上未麻的瘋狂粉絲 — — 「眼距過寬男」Me-Mania
+                        的主觀敘事，哪些是他的妄想，哪些是真實？人是他殺的嗎？到底是誰殺了誰？
+                    </p>
+                    <p>
+                        虛實交融和多重敘事產生不確定，不確定則營造出懸疑驚悚，但真正令我難以忍受的東西其實是那些確定、扎實，由「凝視」感受到的暴力。強暴一景中，未麻在舞台上被臨演圍困，舞台下有觀看的工作人員，攝影機從四面八方對準未麻，還有螢幕前的觀眾，一同眼睜睜看著未麻被壓制在地，聲嘶力竭、拚命掙扎，最終被侵犯，並且被一大堆眼睛看著自己被侵犯。鏡頭時而以未麻的視角，時而對準未麻，時而對準對準未麻的鏡頭，觀者一方面宛如置身未麻之恐怖處境，同時又被迫抽離，觀看她被施暴，成為施暴者一員。成語曰：「怵目驚心」、「卒不忍睹」，因為有時候「看」令人無法忍受。今敏在《千年女優》的訪談中曾說：「電影不是用看的，而是要用身體來體會。」《藍色恐懼》已用毫不手軟的視覺暴力和相得益彰的剪輯手法，成功做到這一點。
+                    </p>
+                    <p>
+                        達倫・艾洛諾夫斯基（Darren Aronofsky）毫不諱言自己對《藍色恐懼》的喜愛，除了買下翻拍版權，在《噩夢輓歌》（Requiem for a Dream,
+                        2000）中更使用完全相同的分鏡（註
+                        2），而讓他家喻戶曉的《黑天鵝》（Black Swan, 2010）看來更是處處有《藍色恐懼》的影響……
+                    </p>
+                </div>
+                <p class="btn-close">CLOSE</p>
+
+
+            </div>
+        </article>
+
+        <article class="artcard ">
+            <div class="card-title card4">
+
+                <div class="title-text">
+                    <h3>Paranoia Agent</h3>
+                    <h4>妄想代理人 2004</h4>
+                </div>
+                <div class="plus">+</div>
+            </div>
+            <div class="card-content">
+                <div class="content-scroll">
+                    <p>
+                        偶像歌手「未麻」轉型為演員後，不只恐嚇威脅不斷，還有人架設網站「未麻的部屋」，鉅細靡遺她的行程與心情。未麻內心早已困惑不安，拍完強暴劇碼和露點寫真後更逐漸迷失自我，而周遭接二連三的兇殺案，更讓未麻產生看見另一個自己的幻覺……
+                    </p>
+
+                    <p>
+                        名義上為改編竹內義和的同名小說，《藍色恐懼》其實只留下原作的三大要素──偶像、恐怖、跟蹤狂。彈性的劇情給今敏發揮的自由，他在本片中以強烈美術和獨特剪輯，呈現未麻的混亂意識與因而迷離的主觀現實。沒有日本動畫界死抱的三元素「機器人、美少女、SF」，而且在預算不高的情況下，今敏卻拍出心理驚悚片（註
+                        1）的最佳動畫範例，並奠定他虛實交融、多重敘事、懸疑驚悚，著重人物心理的鮮明風格。
+                    </p>
+
+                    <p>
+                        未麻是偶像，是演員，也是會到超市買牛奶和魚飼料的普通女孩，剛開始她還能順利轉換角色，因此台上是台上，台下是台下，界限涇渭分明，觀眾得以分辨到哪兒是哪。然而，當環境和事件開始與未麻的願望牴觸 —
+                        —
+                        強暴戲和露點寫真，再加上未麻演的戲與她本身或她的現實生活共鳴 — —
+                        情緒崩潰、精神耗弱，還有連續殺人事件，她變得分不清戲劇、妄想／夢境，和現實之間的界限，場景間的轉換跟著越來越快，越來越意識流，觀眾只能被扯進這模稜兩可，虛實難辨的漩渦，甚至和未麻一樣，得依靠詭異的網站「未麻的部屋」來死命抓著「原來去了原宿啊」之類即使為假也沒關係的日常。
+                    </p>
+
+                    <p>
+                        未麻究竟做了什麼、沒做過什麼？她殺了人嗎？未麻本身的混亂之外，還加上未麻的瘋狂粉絲 — — 「眼距過寬男」Me-Mania
+                        的主觀敘事，哪些是他的妄想，哪些是真實？人是他殺的嗎？到底是誰殺了誰？
+                    </p>
+                    <p>
+                        虛實交融和多重敘事產生不確定，不確定則營造出懸疑驚悚，但真正令我難以忍受的東西其實是那些確定、扎實，由「凝視」感受到的暴力。強暴一景中，未麻在舞台上被臨演圍困，舞台下有觀看的工作人員，攝影機從四面八方對準未麻，還有螢幕前的觀眾，一同眼睜睜看著未麻被壓制在地，聲嘶力竭、拚命掙扎，最終被侵犯，並且被一大堆眼睛看著自己被侵犯。鏡頭時而以未麻的視角，時而對準未麻，時而對準對準未麻的鏡頭，觀者一方面宛如置身未麻之恐怖處境，同時又被迫抽離，觀看她被施暴，成為施暴者一員。成語曰：「怵目驚心」、「卒不忍睹」，因為有時候「看」令人無法忍受。今敏在《千年女優》的訪談中曾說：「電影不是用看的，而是要用身體來體會。」《藍色恐懼》已用毫不手軟的視覺暴力和相得益彰的剪輯手法，成功做到這一點。
+                    </p>
+                    <p>
+                        達倫・艾洛諾夫斯基（Darren Aronofsky）毫不諱言自己對《藍色恐懼》的喜愛，除了買下翻拍版權，在《噩夢輓歌》（Requiem for a Dream,
+                        2000）中更使用完全相同的分鏡（註
+                        2），而讓他家喻戶曉的《黑天鵝》（Black Swan, 2010）看來更是處處有《藍色恐懼》的影響……
+                    </p>
+                </div>
+                <p class="btn-close">CLOSE</p>
+
+
+            </div>
+        </article>
+
+
+        <article class="artcard ">
+            <div class="card-title card5">
+
+                <div class="title-text">
+                    <h3>Paprika</h3>
+                    <h4>盜夢偵探 2006</h4>
+                </div>
+                <div class="plus">+</div>
+            </div>
+            <div class="card-content">
+                <div class="content-scroll">
+                    <p>
+                        偶像歌手「未麻」轉型為演員後，不只恐嚇威脅不斷，還有人架設網站「未麻的部屋」，鉅細靡遺她的行程與心情。未麻內心早已困惑不安，拍完強暴劇碼和露點寫真後更逐漸迷失自我，而周遭接二連三的兇殺案，更讓未麻產生看見另一個自己的幻覺……
+                    </p>
+
+                    <p>
+                        名義上為改編竹內義和的同名小說，《藍色恐懼》其實只留下原作的三大要素──偶像、恐怖、跟蹤狂。彈性的劇情給今敏發揮的自由，他在本片中以強烈美術和獨特剪輯，呈現未麻的混亂意識與因而迷離的主觀現實。沒有日本動畫界死抱的三元素「機器人、美少女、SF」，而且在預算不高的情況下，今敏卻拍出心理驚悚片（註
+                        1）的最佳動畫範例，並奠定他虛實交融、多重敘事、懸疑驚悚，著重人物心理的鮮明風格。
+                    </p>
+
+                    <p>
+                        未麻是偶像，是演員，也是會到超市買牛奶和魚飼料的普通女孩，剛開始她還能順利轉換角色，因此台上是台上，台下是台下，界限涇渭分明，觀眾得以分辨到哪兒是哪。然而，當環境和事件開始與未麻的願望牴觸 —
+                        —
+                        強暴戲和露點寫真，再加上未麻演的戲與她本身或她的現實生活共鳴 — —
+                        情緒崩潰、精神耗弱，還有連續殺人事件，她變得分不清戲劇、妄想／夢境，和現實之間的界限，場景間的轉換跟著越來越快，越來越意識流，觀眾只能被扯進這模稜兩可，虛實難辨的漩渦，甚至和未麻一樣，得依靠詭異的網站「未麻的部屋」來死命抓著「原來去了原宿啊」之類即使為假也沒關係的日常。
+                    </p>
+
+                    <p>
+                        未麻究竟做了什麼、沒做過什麼？她殺了人嗎？未麻本身的混亂之外，還加上未麻的瘋狂粉絲 — — 「眼距過寬男」Me-Mania
+                        的主觀敘事，哪些是他的妄想，哪些是真實？人是他殺的嗎？到底是誰殺了誰？
+                    </p>
+                    <p>
+                        虛實交融和多重敘事產生不確定，不確定則營造出懸疑驚悚，但真正令我難以忍受的東西其實是那些確定、扎實，由「凝視」感受到的暴力。強暴一景中，未麻在舞台上被臨演圍困，舞台下有觀看的工作人員，攝影機從四面八方對準未麻，還有螢幕前的觀眾，一同眼睜睜看著未麻被壓制在地，聲嘶力竭、拚命掙扎，最終被侵犯，並且被一大堆眼睛看著自己被侵犯。鏡頭時而以未麻的視角，時而對準未麻，時而對準對準未麻的鏡頭，觀者一方面宛如置身未麻之恐怖處境，同時又被迫抽離，觀看她被施暴，成為施暴者一員。成語曰：「怵目驚心」、「卒不忍睹」，因為有時候「看」令人無法忍受。今敏在《千年女優》的訪談中曾說：「電影不是用看的，而是要用身體來體會。」《藍色恐懼》已用毫不手軟的視覺暴力和相得益彰的剪輯手法，成功做到這一點。
+                    </p>
+                    <p>
+                        達倫・艾洛諾夫斯基（Darren Aronofsky）毫不諱言自己對《藍色恐懼》的喜愛，除了買下翻拍版權，在《噩夢輓歌》（Requiem for a Dream,
+                        2000）中更使用完全相同的分鏡（註
+                        2），而讓他家喻戶曉的《黑天鵝》（Black Swan, 2010）看來更是處處有《藍色恐懼》的影響……
+                    </p>
+                </div>
+                <p class="btn-close">CLOSE</p>
+
+
+            </div>
+        </article>
+
+        <article class="artcard">
+            <div class="card-title card6">
+
+                <div class="title-text">
+                    <h3>Good Morning</h3>
+                    <h4>早安 2007</h4>
+                </div>
+                <div class="plus">+</div>
+            </div>
+            <div class="card-content">
+                <div class="content-scroll">
+                    <p>
+                        偶像歌手「未麻」轉型為演員後，不只恐嚇威脅不斷，還有人架設網站「未麻的部屋」，鉅細靡遺她的行程與心情。未麻內心早已困惑不安，拍完強暴劇碼和露點寫真後更逐漸迷失自我，而周遭接二連三的兇殺案，更讓未麻產生看見另一個自己的幻覺……
+                    </p>
+
+                    <p>
+                        名義上為改編竹內義和的同名小說，《藍色恐懼》其實只留下原作的三大要素──偶像、恐怖、跟蹤狂。彈性的劇情給今敏發揮的自由，他在本片中以強烈美術和獨特剪輯，呈現未麻的混亂意識與因而迷離的主觀現實。沒有日本動畫界死抱的三元素「機器人、美少女、SF」，而且在預算不高的情況下，今敏卻拍出心理驚悚片（註
+                        1）的最佳動畫範例，並奠定他虛實交融、多重敘事、懸疑驚悚，著重人物心理的鮮明風格。
+                    </p>
+
+                    <p>
+                        未麻是偶像，是演員，也是會到超市買牛奶和魚飼料的普通女孩，剛開始她還能順利轉換角色，因此台上是台上，台下是台下，界限涇渭分明，觀眾得以分辨到哪兒是哪。然而，當環境和事件開始與未麻的願望牴觸 —
+                        —
+                        強暴戲和露點寫真，再加上未麻演的戲與她本身或她的現實生活共鳴 — —
+                        情緒崩潰、精神耗弱，還有連續殺人事件，她變得分不清戲劇、妄想／夢境，和現實之間的界限，場景間的轉換跟著越來越快，越來越意識流，觀眾只能被扯進這模稜兩可，虛實難辨的漩渦，甚至和未麻一樣，得依靠詭異的網站「未麻的部屋」來死命抓著「原來去了原宿啊」之類即使為假也沒關係的日常。
+                    </p>
+
+                    <p>
+                        未麻究竟做了什麼、沒做過什麼？她殺了人嗎？未麻本身的混亂之外，還加上未麻的瘋狂粉絲 — — 「眼距過寬男」Me-Mania
+                        的主觀敘事，哪些是他的妄想，哪些是真實？人是他殺的嗎？到底是誰殺了誰？
+                    </p>
+                    <p>
+                        虛實交融和多重敘事產生不確定，不確定則營造出懸疑驚悚，但真正令我難以忍受的東西其實是那些確定、扎實，由「凝視」感受到的暴力。強暴一景中，未麻在舞台上被臨演圍困，舞台下有觀看的工作人員，攝影機從四面八方對準未麻，還有螢幕前的觀眾，一同眼睜睜看著未麻被壓制在地，聲嘶力竭、拚命掙扎，最終被侵犯，並且被一大堆眼睛看著自己被侵犯。鏡頭時而以未麻的視角，時而對準未麻，時而對準對準未麻的鏡頭，觀者一方面宛如置身未麻之恐怖處境，同時又被迫抽離，觀看她被施暴，成為施暴者一員。成語曰：「怵目驚心」、「卒不忍睹」，因為有時候「看」令人無法忍受。今敏在《千年女優》的訪談中曾說：「電影不是用看的，而是要用身體來體會。」《藍色恐懼》已用毫不手軟的視覺暴力和相得益彰的剪輯手法，成功做到這一點。
+                    </p>
+                    <p>
+                        達倫・艾洛諾夫斯基（Darren Aronofsky）毫不諱言自己對《藍色恐懼》的喜愛，除了買下翻拍版權，在《噩夢輓歌》（Requiem for a Dream,
+                        2000）中更使用完全相同的分鏡（註
+                        2），而讓他家喻戶曉的《黑天鵝》（Black Swan, 2010）看來更是處處有《藍色恐懼》的影響……
+                    </p>
+                </div>
+                <p class="btn-close">CLOSE</p>
+
+
+            </div>
+        </article>
+    </main>
+    <div class="closeAll" id="closeAll">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="backTop" id="backTop">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <footer>
+        <p>2020 All right reserved.</p>
+    </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+   
+    <script>
+        $(".nav-bar").click(function(){
+            $(".nav-bar ul").toggleClass("active")
+        })
+
+        $(".language").mouseenter(function () {
+            $(".fa-globe-americas").addClass("active")
+            $(".language ul").addClass("active")
+        }).mouseleave(function () {
+            $(".fa-globe-americas").removeClass("active")
+            $(".language ul").removeClass("active")
+        })
+
+        $(".card-title").click(function () {
+            $(this).closest("article").find(".card-content, .content-scroll, .btn-close, .plus").toggleClass("active")
+        })
+
+        $(".btn-close").click(function () {
+            $(this).closest("article").find(".card-content, .content-scroll, .btn-close, .plus").removeClass("active")
+        })
+
+        $("#backTop").click(function () {
+
+            $("html").animate({
+                scrollTop: 0
+            }, 500)
+
+        })
+
+        $("#closeAll").click(function(){
+            $(".card-content, .content-scroll, .btn-close, .plus").removeClass("active")
+        })
+
+
+        $(window).scroll(function () {
+            let Top = $(this).scrollTop()
+
+            if (Top >= 20) {
+                $("#backTop, #closeAll").addClass("active")
+            }
+            else {
+                $("#backTop, #closeAll").removeClass("active")
+            }
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
